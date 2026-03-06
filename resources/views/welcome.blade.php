@@ -199,11 +199,11 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                 @foreach($services as $index => $s)
-                <div class="glass p-16 rounded-[4.5rem] hover:ring-2 hover:ring-indigo-600 transition-all duration-700 reveal group" style="transition-delay: {{ $index * 0.1 }}s">
-                    <div class="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center text-indigo-600 mb-12 shadow-inner group-hover:bg-gradient-premium group-hover:text-white transition-all duration-500 font-black text-3xl">
+                <div class="glass p-16 rounded-[4.5rem] hover:scale-105 hover:ring-2 hover:ring-indigo-600 transition-all duration-700 reveal group" style="transition-delay: {{ $index * 0.1 }}s">
+                    <div class="w-20 h-20 bg-slate-50 rounded-3xl flex items-center justify-center text-indigo-600 mb-12 shadow-inner transition-all duration-500 font-black text-3xl">
                         {{ $s->icon ?? str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                     </div>
-                    <h4 class="text-3xl font-black text-slate-900 mb-6 tracking-tight group-hover:text-indigo-600 transition-colors">{{ $s->title }}</h4>
+                    <h4 class="text-3xl font-black text-slate-900 mb-6 tracking-tight transition-colors">{{ $s->title }}</h4>
                     <p class="text-slate-500 text-lg leading-relaxed font-semibold mb-10 opacity-70 group-hover:opacity-100 transition-opacity">{{ $s->description }}</p>
                     <a href="#contact" class="inline-flex items-center gap-3 text-indigo-600 font-black text-xs uppercase tracking-[0.3em] group-hover:gap-5 transition-all">
                         Deep Dive <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
