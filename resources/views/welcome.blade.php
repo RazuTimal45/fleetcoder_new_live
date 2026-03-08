@@ -225,7 +225,7 @@
                         <div class="absolute -top-16 -left-16 w-full h-full border-4 border-white/10 rounded-[5rem] -z-0"></div>
                         <div class="absolute -bottom-12 -right-12 glass backdrop-blur-3xl p-12 rounded-[3.5rem] z-20 shadow-2xl border-white/10">
                             <div class="flex items-center gap-8">
-                                <div class="w-24 h-24 bg-gradient-premium rounded-3xl flex items-center justify-center text-white font-black text-5xl">10+</div>
+                                <div class="w-24 h-24 bg-gradient-premium rounded-3xl flex items-center justify-center text-white font-black text-5xl">3+</div>
                                 <div class="pr-8">
                                     <div class="text-slate-900 font-black text-2xl mb-2">Power Years</div>
                                     <div class="text-slate-500 font-black text-[10px] uppercase tracking-[0.3em] opacity-60">Elite Engineering</div>
