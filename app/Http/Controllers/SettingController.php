@@ -27,11 +27,28 @@ class SettingController extends Controller
             'contact_subtitle' => 'nullable|string|max:255',
             'contact_address' => 'nullable|string|max:255',
             'contact_email' => 'nullable|email|max:255',
+            'is_editable' => 'nullable|boolean',
         ]);
+
+        $data['is_editable'] = $request->has('is_editable');
 
         $setting->update($data);
 
         return back()->with('status', 'settings-updated');
+    }
+
+    public function updateOrder(Request $request)
+    {
+        $setting = Setting::first();
+        if (!$setting) return response()->json(['error' => 'No settings found'], 404);
+
+        $request->validate([
+            'order' => 'required|array'
+        ]);
+
+        $setting->update(['section_order' => $request->order]);
+
+        return response()->json(['success' => true]);
     }
 
     public function about()

@@ -11,6 +11,7 @@
                 ['id'=>'meta','label'=>'Metadata','icon'=>'M7 7h.01M7 11h.01M7 15h.01M10 7h10M10 11h10M10 15h10'],
                 ['id'=>'appearance','label'=>'Appearance','icon'=>'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01'],
                 ['id'=>'contact','label'=>'Contact Info','icon'=>'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'],
+                ['id'=>'editor','label'=>'Site Editor','icon'=>'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'],
                 ['id'=>'security','label'=>'Account Security','icon'=>'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'],
             ];
             @endphp
@@ -156,6 +157,33 @@
                 </button>
             </div>
 
+            {{-- Site Editor --}}
+            <div id="panel-editor" style="display:none;background:#fff;border-radius:18px;padding:32px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid #f1f5f9;">
+                <h3 style="font-size:17px;font-weight:800;color:#0f172a;margin:0 0 6px;">Site Editor Settings</h3>
+                <p style="font-size:13px;color:#94a3b8;margin:0 0 28px;">Control frontend editing capabilities</p>
+
+                <div style="margin-bottom:28px;display:flex;align-items:center;gap:12px;">
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="is_editable" value="1" {{ $siteSettings->is_editable ? 'checked' : '' }}>
+                        <span class="slider"></span>
+                    </label>
+                    <span style="font-size:14px;font-weight:600;color:#374151;">Enable Drag-and-Drop Reordering on Frontend</span>
+                </div>
+
+                <style>
+                    .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+                    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+                    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+                    .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+                    input:checked + .slider { background-color: #6366f1; }
+                    input:checked + .slider:before { transform: translateX(20px); }
+                </style>
+
+                <button type="submit" style="background:#6366f1;color:#fff;border:none;padding:11px 24px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;">
+                    Save Editor Settings
+                </button>
+            </div>
+
             {{-- Security Placeholder --}}
             <div id="panel-security" style="display:none;background:#fff;border-radius:18px;padding:32px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid #f1f5f9;">
                 <h3 style="font-size:17px;font-weight:800;color:#0f172a;margin:0 0 6px;">Account Security</h3>
@@ -167,7 +195,7 @@
 
     <script>
         function showTab(id) {
-            ['general','hero','meta','appearance','contact','security'].forEach(t => {
+            ['general','hero','meta','appearance','contact','editor','security'].forEach(t => {
                 const el = document.getElementById('panel-'+t);
                 if (el) el.style.display = t===id ? 'block' : 'none';
                 

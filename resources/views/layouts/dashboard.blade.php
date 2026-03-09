@@ -7,6 +7,8 @@
     <meta name="keywords" content="{{ $siteSettings->meta_keyword ?? '' }}">
     <meta name="description" content="{{ $siteSettings->meta_description ?? '' }}">
     <title>{{ $title ?? $siteSettings->title ?? config('app.name', 'Laravel') }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -35,7 +37,6 @@
             width: 40px; height: 40px; border-radius: 10px;
             background: linear-gradient(135deg, var(--theme-color-1), var(--theme-color-2));
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 12px rgba(99,102,241,.4);
             flex-shrink: 0;
         }
         .sidebar-logo-text { color: #f1f5f9; font-weight: 700; font-size: 17px; letter-spacing: -.3px; transition: opacity .2s; }
@@ -174,7 +175,8 @@
     <div class="sidebar-logo">
         <div class="sidebar-logo-icon">
             @if($siteSettings->header_logo)
-                <img src="{{ $siteSettings->header_logo }}" alt="Logo" style="width: 24px; height: 24px;">
+                <!-- <img src="{{ $siteSettings->header_logo }}" alt="Logo" style="width: 24px; height: 24px;"> -->
+                  <img src="{{ asset('logo-white.png') }}" alt="FleetCoders Logo" class="w-8 h-8">
             @else
                 <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>

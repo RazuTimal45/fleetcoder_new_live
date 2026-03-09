@@ -24,5 +24,12 @@ class Setting extends Model
         'contact_subtitle',
         'contact_address',
         'contact_email',
+        'is_editable',
+        'section_order',
+    ];
+
+    protected $casts = [
+        'section_order' => 'array',
+        'is_editable' => 'boolean',
     ];
 }

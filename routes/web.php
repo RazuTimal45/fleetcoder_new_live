@@ -34,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/about',    [SettingController::class, 'about'])->name('dashboard.about');
     Route::get('/dashboard/settings', fn() => view('dashboard.settings'))->name('dashboard.settings');
     Route::post('/dashboard/settings', [SettingController::class, 'update'])->name('dashboard.settings.update');
+    Route::post('/dashboard/settings/order', [SettingController::class, 'updateOrder'])->name('dashboard.settings.updateOrder');
 });
 
 // ── profile 
