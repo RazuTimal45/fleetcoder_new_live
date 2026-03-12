@@ -151,7 +151,12 @@
                 @auth
                     <a href="{{ url('/dashboard') }}" class="btn-primary">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="px-5 py-2 text-slate-600 font-bold hover:text-indigo-600 transition-colors">Login</a>
+                    <a href="{{ route('login') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-indigo-500 text-indigo-600 font-bold hover:bg-indigo-50 transition-colors text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M18 12H9m0 0l3-3m-3 3l3 3" />
+                        </svg>
+                        Admin Login
+                    </a>
                     <a href="{{ route('register') }}" class="btn-primary ml-2 shadow-lg shadow-indigo-100">Get Started</a>
                 @endauth
             </nav>
