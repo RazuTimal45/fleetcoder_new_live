@@ -13,4 +13,5 @@ class DashboardLayout extends Component
     {
         return view('layouts.dashboard');
     }
+    
 }
