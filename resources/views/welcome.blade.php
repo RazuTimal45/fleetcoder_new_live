@@ -499,7 +499,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16 lg:gap-24 mb-16 sm:mb-24 lg:mb-40">
                 <div class="space-y-6 sm:space-y-8 lg:space-y-12">
                     <div class="flex items-center gap-3 sm:gap-5">
-                        <div class="w-11 h-11 sm:w-14 sm:h-14 bg-indigo-600 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/30">
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 bg-gradient-premium rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/30">
                             <img src="{{ asset('logo-white.png') }}" alt="FleetCoders Logo" class="w-6 h-6 sm:w-8 sm:h-8">
                         </div>
                         <span class="footer-brand-name text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tighter">{{ $siteSettings->title ?? 'FleetCoders' }}</span>
