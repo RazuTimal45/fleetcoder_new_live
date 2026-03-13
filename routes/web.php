@@ -44,4 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('logout', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout');
+Route::get('logout', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy']);
+
 require __DIR__.'/auth.php';
