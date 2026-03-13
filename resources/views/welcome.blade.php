@@ -98,9 +98,11 @@
             .stat-label  { font-size: 9px; }
 
             /* Services */
-            .service-card { padding: 28px 20px; border-radius: 2rem; }
-            .service-card h4 { font-size: 1.25rem; }
-            .service-card p  { font-size: 0.9rem; }
+            .service-card-new { transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+            .service-card-new:hover { transform: translateY(-16px); }
+            .service-icon-new { box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5); }
+            .service-card-new h4 { font-size: 1.5rem; }
+            .service-card-new p  { font-size: 0.95rem; }
 
             /* About */
             .about-badge { font-size: 9px; }
@@ -126,7 +128,7 @@
 
         /* ── Tablet (641px – 767px) ── */
         @media (min-width: 641px) and (max-width: 767px) {
-            .service-card { padding: 36px 28px; border-radius: 2.5rem; }
+            .service-card-new { padding: 0; }
             .contact-card { padding: 36px 28px; border-radius: 2.5rem; }
         }
     </style>
@@ -267,17 +269,40 @@
                             <p class="text-base sm:text-lg lg:text-2xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed">We don't just provide services; we engineer unfair advantages for our partners.</p>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
                             @foreach($services as $index => $s)
-                            <div class="service-card glass p-8 sm:p-12 lg:p-16 rounded-[2.5rem] sm:rounded-[3.5rem] lg:rounded-[4.5rem] hover:scale-105 hover:ring-2 hover:ring-indigo-600 transition-all duration-700 reveal group" style="transition-delay: {{ $index * 0.1 }}s">
-                                <div class="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-slate-50 rounded-2xl sm:rounded-3xl flex items-center justify-center text-indigo-600 mb-8 sm:mb-10 lg:mb-12 shadow-inner transition-all duration-500 font-black text-xl sm:text-2xl lg:text-3xl">
-                                    {{ $s->icon ?? str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                            <div class="service-card-new group relative reveal" style="transition-delay: {{ $index * 0.1 }}s">
+                                <!-- Background Glow -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                
+                                <div class="relative h-full glass p-8 sm:p-10 lg:p-12 rounded-[3rem] border border-white shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-start overflow-hidden">
+                                    <!-- Top Right Accent -->
+                                    <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-indigo-50 opacity-50 rounded-bl-[4rem] group-hover:scale-125 transition-transform duration-700"></div>
+                                    
+                                    <!-- Icon / Number -->
+                                    <div class="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-premium rounded-2xl flex items-center justify-center text-white mb-10 shadow-lg shadow-indigo-200 group-hover:rotate-6 transition-transform duration-500">
+                                        <div class="font-black text-2xl lg:text-3xl">
+                                            @if(str_contains($s->icon ?? '', '<svg'))
+                                                {!! $s->icon !!}
+                                            @else
+                                                {{ $s->icon ?? str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                                            @endif
+                                        </div>
+                                    </div>
+                                    
+                                    <h4 class="text-2xl lg:text-3xl font-black text-slate-900 mb-5 tracking-tight group-hover:text-indigo-600 transition-colors">{{ $s->title }}</h4>
+                                    
+                                    <p class="text-slate-500 text-base lg:text-lg leading-relaxed font-semibold mb-10 flex-grow opacity-80 group-hover:opacity-100 transition-opacity">
+                                        {{ $s->description }}
+                                    </p>
+                                    
+                                    <a href="#contact" class="inline-flex items-center gap-3 text-indigo-600 font-black text-xs tracking-[0.2em] uppercase group-hover:gap-5 transition-all">
+                                        Precision Engineering 
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </a>
                                 </div>
-                                <h4 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mb-4 sm:mb-6 tracking-tight transition-colors">{{ $s->title }}</h4>
-                                <p class="text-slate-500 text-sm sm:text-base lg:text-lg leading-relaxed font-semibold mb-6 sm:mb-8 lg:mb-10 opacity-70 group-hover:opacity-100 transition-opacity">{{ $s->description }}</p>
-                                <a href="#contact" class="inline-flex items-center gap-2 sm:gap-3 text-indigo-600 font-black text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] group-hover:gap-5 transition-all">
-                                    Deep Dive <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                </a>
                             </div>
                             @endforeach
                         </div>
